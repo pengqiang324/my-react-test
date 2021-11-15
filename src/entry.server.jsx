@@ -6,13 +6,14 @@ import { routes } from './Route.jsx'
 import App from './App'
 
 const loadBranchData = async (url) => {
-    // const branch = matchRoutes(routes, url)
-    // const data = branch[1]?.route.loadData ? await branch[1].route.loadData() : null
-    // // console.log(data)
-    // return data
+    const branch = matchRoutes(routes, url)
+    const data = branch && branch[branch.length-1].route.loadData ? 
+                    await branch[branch.length-1].route.loadData() : null
+    return data
 }
-export function render(url) {
-    // const data = loadBranchData(url)
+export async function render(url) {
+    const data = await loadBranchData(url)
+    console.log(data)
     return ReactDOMServer.renderToString(
         <React.StrictMode>
             <StaticRouter location={url}>

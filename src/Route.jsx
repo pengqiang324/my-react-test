@@ -19,7 +19,7 @@ export const routes = [
           path: 'about/:id',
           exact: true,
           element: <About/>
-        } 
+        }
       ] 
   }
 ]
