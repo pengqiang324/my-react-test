@@ -15,6 +15,7 @@ async function createServer() {
 
     if (!isProduction) {
         vite = await require('vite').createServer({
+            publicDir: false,
             root,
             server: { middlewareMode: 'ssr' }
         })
@@ -27,7 +28,21 @@ async function createServer() {
     app.use('*', async (req, res) => {
         let url = req.originalUrl
 
-        if(url.indexOf('.')>-1) { res.end(''); return false;}
+        if(url.indexOf('.')>-1) { 
+            // if (url.endsWith('.jsx')) {
+            //     // js需要做额外的处理，所以不是简单的静态资源
+            //     const  p = resolve(url.slice(1))
+            //     const ret = await fsp.readFile(p, 'utf8')
+            //     console.log(ret)
+            //     // ctx.body = rewriteImport(ret)
+            //     // res.setHeader('Content-Type', 'application/javascript')
+            //     // res.end('')
+            // } else {
+            //     res.end(''); 
+            // }
+            res.end(''); 
+            return false;
+        }
         
         try {
             let template

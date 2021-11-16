@@ -22,6 +22,53 @@ router.get('/list', async (ctx, next) => {
     await next()
 })
 
+router.get('/userList', async (ctx, next) => {
+    ctx.response.type = 'application/json'
+    ctx.body = {
+        list: [
+            {
+                name: '彭新宇',
+                age: 26,
+                sex: '男',
+                descri: '我是一名码农'
+            },
+            {
+                name: '张学友',
+                age: 52,
+                sex: '男',
+                descri: '我是一名歌手'
+            },
+            {
+                name: '刘德华',
+                age: 54,
+                sex: '男',
+                descri: '我是一名演员'
+            },
+            {
+                name: '彭新宇',
+                age: 26,
+                sex: '男',
+                descri: '我是一名码农'
+            },
+            {
+                name: '张学友',
+                age: 52,
+                sex: '男',
+                descri: '我是一名歌手'
+            },
+            {
+                name: '刘德华',
+                age: 54,
+                sex: '男',
+                descri: '我是一名演员'
+            }
+        ],
+        msg: '获取成功',
+        code: 200
+    }
+    await next()
+})
+
 router.post('/detail/:id', async (ctx, next) => {
     ctx.response.type = 'application/json'
     ctx.body = {
