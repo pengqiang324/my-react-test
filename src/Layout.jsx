@@ -1,6 +1,6 @@
 import { Outlet, NavLink } from 'react-router-dom'
 
-function Layout() {
+function Layout(props) {
     return (
       <>
         <ul>

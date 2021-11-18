@@ -4,7 +4,8 @@ import { BrowserRouter } from 'react-router-dom'
 import createStore from './store/index'
 import { Provider } from 'react-redux'
 import App from './App.jsx'
-const store = createStore()
+
+const store = createStore(window.INITIAL_STATE)
 
 ReactDOM.hydrate(
     <React.StrictMode>

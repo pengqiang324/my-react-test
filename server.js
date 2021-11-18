@@ -61,7 +61,11 @@ async function createServer() {
                 render = require(resolve('dist/server/entry.server.jsx')).render
             }
             
-            let html = template.replace('<!--app-html-->', await render(url))
+            const renderContent = await render(url)
+            let html = template.replace('<!--app-html-->', renderContent.html)
+                               .replace('<!--inject-store-->', renderContent.script)
+                               .replace('/*app-css*/', renderContent.css)
+                               .replace('<!--app-header-->', renderContent.header)
             res.setHeader('Content-Type', 'text/html')
             return res.status(200).end(html)
         } catch(err) {
